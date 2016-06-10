@@ -1,1 +1,28 @@
-body {margin:0}
+html {height: 100%}
+body {
+  height: 100%;
+  margin:0;
+  background: url('https://atmospherejs.com/bg-nav-1200x1000.jpg') no-repeat center bottom;
+  background-size: cover;
+  padding: 20px;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+#nav {
+  ul {
+    margin: 0;
+    li {
+      list-style: none;
+      margin: 0;
+      a {
+        font-size: 20px;
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
