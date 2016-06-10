@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Header from './Header';
-import Bottom from './Bottom';
-import nav from './nav';
 
 require('../scss/style.scss');
 

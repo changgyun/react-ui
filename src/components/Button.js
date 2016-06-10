@@ -5,7 +5,6 @@ const style = {
     margin: 12,
 };
 
-
 const MyAwesomeReactComponent = () => (
     <div>
         <h2>Button</h2>
