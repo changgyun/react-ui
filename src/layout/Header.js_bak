@@ -14,6 +14,7 @@ class Header extends React.Component {
                 </ul>
                 {this.props.children}
             </div>
+
         );
     }
 }
