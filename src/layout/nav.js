@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import getCustomTheme from '../layout/themeCustom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Home from '../components/Home';
@@ -16,7 +17,7 @@ class Nav extends React.Component {
                         <li><Link to="home">Home</Link></li>
                         <li><Link to="button">Button</Link></li>
                     </ul>
-                <MuiThemeProvider muiTheme={getMuiTheme()}>
+                <MuiThemeProvider muiTheme={getCustomTheme()}>
                     {this.props.children}
                 </MuiThemeProvider>
             </div>
