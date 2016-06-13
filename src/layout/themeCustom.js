@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = getMuiTheme;
 
-var _lodash = require('lodash.merge');
+var _lodash = require('material-ui/node_modules/lodash.merge');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -31,7 +31,7 @@ var _rtl = require('material-ui/utils/rtl');
 
 var _rtl2 = _interopRequireDefault(_rtl);
 
-var _compose = require('recompose/compose');
+var _compose = require('material-ui/node_modules/recompose/compose');
 
 var _compose2 = _interopRequireDefault(_compose);
 
@@ -169,7 +169,8 @@ function getMuiTheme(muiTheme) {
         },
         navDrawer: {
             width: spacing.desktopKeylineIncrement * 4,
-            color: palette.canvasColor
+            //color: palette.canvasColor
+            color: 'transparent'
         },
         listItem: {
             nestedLevelDepth: 18,
@@ -178,8 +179,10 @@ function getMuiTheme(muiTheme) {
             rightIconColor: _colors.grey600
         },
         menu: {
-            backgroundColor: palette.canvasColor,
-            containerBackgroundColor: palette.canvasColor
+            //backgroundColor: palette.canvasColor,
+            //containerBackgroundColor: palette.canvasColor
+            backgroundColor: 'transparent',
+            containerBackgroundColor: 'transparent'
         },
         menuItem: {
             dataHeight: 32,
@@ -199,7 +202,8 @@ function getMuiTheme(muiTheme) {
         },
         paper: {
             color: palette.textColor,
-            backgroundColor: palette.canvasColor,
+            //backgroundColor: palette.canvasColor,
+            backgroundColor: 'transparent',
             zDepthShadows: [[1, 6, 0.12, 1, 4, 0.12], [3, 10, 0.16, 3, 10, 0.23], [10, 30, 0.19, 6, 10, 0.23], [14, 45, 0.25, 10, 18, 0.22], [19, 60, 0.30, 15, 20, 0.22]].map(function (d) {
                 return '0 ' + d[0] + 'px ' + d[1] + 'px ' + (0, _colorManipulator.fade)(palette.shadowColor, d[2]) + ',\n         0 ' + d[3] + 'px ' + d[4] + 'px ' + (0, _colorManipulator.fade)(palette.shadowColor, d[5]);
             })
