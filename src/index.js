@@ -1,6 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './layout/layout';
+import layout from './layout/layout';
 
-ReactDOM.render(<App />, document.getElementById('React_app'));
+class index extends React.Component {
+    render(){
+        return (
+            <layout />
+        )
+    }
+}
+export default index;
 

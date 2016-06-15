@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
+import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
 
 import IconButton from 'material-ui/IconButton';
 import {white} from 'material-ui/styles/colors';
@@ -21,7 +22,13 @@ class Nav extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {open: false};
+        this.state = {
+            open: false,
+            menuData: [
+                {title: "Home", link_able: "home"},
+                {title: "Button", link_able: "button"},
+            ]
+        };
     }
 
     handleToggle() {
@@ -41,20 +48,20 @@ class Nav extends React.Component {
                     tooltip="menu"
                 ><NavigationClose color={white} /></IconButton>
                 <Drawer
-                    docked={false}
                     width={500}
                     style={DrawerStyle}
                     open={this.state.open}
                     onRequestChange={(open) => this.setState({open})}
                 >
-                    <MenuItem style={DrawerStyle} onTouchTap={this.handleClose.bind(this)}>Menu Item</MenuItem>
-                    <MenuItem style={DrawerStyle} onTouchTap={this.handleClose.bind(this)}>Menu Item 2</MenuItem>
+                    {this.state.menuData.map((Nav, i) => {
+                        return (<MenuItem style={DrawerStyle} onTouchTap={this.handleClose.bind(this)} key={i}><Link to={Nav.link_able}>{Nav.title}</Link></MenuItem>);
+                    })}
                 </Drawer>
+                {this.props.children}
             </div>
         );
     }
 }
-
 
 export default Nav;
 

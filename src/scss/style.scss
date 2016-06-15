@@ -1,4 +1,4 @@
-html, .React_app, .layout_container {height: 100%}
+html, .React_app, .layout_container, .view {height: 100%}
 body {
   height: 100%;
   margin:0;
@@ -32,6 +32,15 @@ body {
   background-size: cover;
 }
 
+.NavDrawer {
+  &:nth-child(1) {
+    background-color: transparent!important;
+  }
+  &:nth-child(2) {
+    box-shadow: none;
+  }
+}
+
 .contents {
   height: 100%;
   h2 {
@@ -62,14 +71,10 @@ body {
   position: absolute;
   top:6px;
   left:0;
+  z-index: 100;
   &.open {
     > span {
-      transform: translate3d(507px,73px,0) scale3d(.85,.85,1)!important;
-      opacity: .9;
-      z-index: 100;
-      position: absolute;
-      top:6px;
-      left:0;
+      opacity: .0;
     }
     & ~ .container {
       transform: translate3d(400px, 0, 0) scale3d(0.85, 0.85, 1);
@@ -79,6 +84,12 @@ body {
       backface-visibility: hidden;
       height: calc(100% - 60px);
       overflow: hidden;
+      .contents {
+        height: 100%;
+        h2 {
+          padding-left: 20px;
+        }
+      }
     }
   }
 }
