@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --host 0.0.0.0",
-    "test": "webpack"
+    "dev": "webpack-dev-server --hot --host 0.0.0.0",
+    "clean": "rimraf dist",
+    "build:webpack": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
+    "build": "npm run clean && npm run build:webpack",
+    "start": "node devServer.js"
   },
   "repository": {
     "type": "git",
@@ -43,6 +46,8 @@
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.10.0"
   }
 }
