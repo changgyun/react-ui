@@ -11,7 +11,7 @@ var MyCard = React.createClass({
             <div style={{padding:'1em'}}>
                 <div style={{border:'1px solid black', width:'100px', height:'100px'}}>
                     {this.props.title}
-                    <img src={this.props.img} />
+                    <img src={this.props.images} />
                 </div>
             </div>
         );
@@ -25,7 +25,9 @@ var Gallery = React.createClass({
             render() {
                 var children = this.props.cards.map(function(card) {
                     return (
-                        <MyCard title={card.title}/>
+                        <MyCard
+                            title={card.title}
+                            images={card.images} />
                     );
                 });
 
@@ -41,15 +43,16 @@ var Gallery = React.createClass({
             }
         });
         var cards = [
-            { title: 'A', img: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'},
-            { title: 'B', img: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'},
-            { title: 'C', img: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'},
-            { title: 'D', img: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'},
-            { title: 'E', img: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'},
-            { title: 'F', img: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'}
+            { title: 'A', images: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'},
+            { title: 'B', images: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'},
+            { title: 'C', images: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'},
+            { title: 'D', images: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'},
+            { title: 'E', images: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'},
+            { title: 'F', images: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'}
         ];
         return (
-            <div>
+            <div className="content_tem">
+                <h3>Masonry</h3>
                 <MyGallery cards={cards}/>
             </div>
 
