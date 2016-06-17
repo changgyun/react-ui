@@ -2,7 +2,7 @@
   "name": "react-ui",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.js",
+  "main": "devServer.js",
   "scripts": {
     "start": "node devServer.js"
   },
@@ -20,5 +20,9 @@
     "express": "^4.13.4",
     "path": "^0.12.7"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "engines": {
+    "node": "4.4.1",
+    "npm": "2.14.20"
+  }
 }
