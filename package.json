@@ -21,10 +21,11 @@
   },
   "homepage": "https://github.com/changgyun/react-ui#readme",
   "dependencies": {
+    "express": "^4.13.4",
+    "react": "^15.1.0",
     "react-addons-update": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-router": "^2.4.1",
-    "express": "^4.13.4"
+    "react-router": "^2.4.1"
   },
   "devDependencies": {
     "babel-core": "^6.9.1",
