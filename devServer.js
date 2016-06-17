@@ -3,10 +3,14 @@ var express = require('express');
 
 var app = express();
 
-app.use(express.static(__dirname + ''));
+app.use(express.static(__dirname + '/'));
 
 app.get('*', function response(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, '/'));
+});
+
+app.get('/', function(req, res) {
+    res.render('index');
 });
 
 app.listen(8080, '0.0.0.0', function(err) {
