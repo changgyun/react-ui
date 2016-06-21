@@ -397,7 +397,7 @@ html, body {
     background-color: #000;
     font-weight: bold;
     overflow-y: auto;
-    height: 300px; }
+    height: 340px; }
 .list_container .list_view li {
     display: flex;
     align-items: center;
