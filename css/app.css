@@ -545,16 +545,14 @@ html, body {
     color: #ff006c !important; }
 .board_container .board_view ul li .play.warning .icons-play_c {
     display: none; }
-.board_container .board_view ul li .wifi {
-    position: relative; }
 .board_container .board_view ul li .wifi .icons-loss {
     display: none; }
 .board_container .board_view ul li .wifi.warning .icons-wifi {
     opacity: .3; }
 .board_container .board_view ul li .wifi.warning .icons-loss {
     position: absolute;
-    right: 3px;
-    top: 6px;
+    right: 8px;
+    top: 8px;
     display: block;
     color: #ff006c !important; }
 .board_container .board_view ul li .icons {
