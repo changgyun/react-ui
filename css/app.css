@@ -526,6 +526,8 @@ html, body {
     border-color: #ff006c;
     background-color: #3a1738;
     box-shadow: 0px 0px 12px #000; }
+.board_container .board_view ul li.alert .bat .box:before {
+    background-color: #3a1738; }
 .board_container .board_view ul li.alert .bat .box:after {
     background-color: #3a1738; }
 .board_container .board_view ul li span {
@@ -617,7 +619,7 @@ html, body {
     justify-content: center;
     width: 100%;
     min-height: 30px;
-    padding-right: 6px; }
+    padding-right: 2px; }
 .board_container .board_view ul li .bat.warning .title {
     color: #ff006c; }
 .board_container .board_view ul li .bat.warning .box .tum {
@@ -629,31 +631,31 @@ html, body {
     margin-top: 1px;
     flex: 10%; }
 .board_container .board_view ul li .bat .box {
-    height: 22px;
+    height: 18px;
     width: 100%;
-    margin-left: 5px;
+    margin-left: 0px;
     background-size: auto;
     padding: 0 3px 0 3px;
-    border: 3px #7c7486 solid;
+    border: 1px #7c7486 solid;
     box-sizing: border-box;
     position: relative; }
 .board_container .board_view ul li .bat .box:before {
     display: inline-block;
     content: '';
     position: absolute;
-    top: 5px;
-    right: -7px;
-    outline: 3px #7c7486 solid;
-    height: 6px;
+    top: 3px;
+    right: -5px;
+    border: 1px #7c7486 solid;
+    height: 7px;
     background-color: #241835;
     width: 3px; }
 .board_container .board_view ul li .bat .box:after {
     display: inline-block;
     content: '';
     position: absolute;
-    top: 5px;
+    top: 4px;
     right: -4px;
-    height: 6px;
+    height: 7px;
     background-color: #241835;
     width: 4px; }
 .board_container .board_view ul li .bat .box .tum {
@@ -665,7 +667,7 @@ html, body {
     margin-top: 3px;
     transition: all 0.7s; }
 .board_container .board_view ul li .tem {
-    margin: 5px 0 5px 0px;
+    margin: 0px 0 0px 0px;
     display: flex;
     align-content: center;
     align-items: center;
@@ -686,23 +688,23 @@ html, body {
     flex: 10%; }
 .board_container .board_view ul li .tem .box {
     width: 100%;
-    height: 18px;
+    height: 14px;
     background-size: auto;
     padding: 0 2px 0 0;
     margin-left: 16px;
-    border: 3px rgba(255, 255, 255, 0.4) solid;
+    border: 1px rgba(255, 255, 255, 0.4) solid;
     box-sizing: border-box;
     position: relative; }
 .board_container .board_view ul li .tem .box:before {
     display: inline-block;
     content: '';
     position: absolute;
-    top: -9px;
+    top: -4px;
     left: -15px;
-    border: 3px #7c7486 solid;
-    height: 24px;
+    border: 1px #7c7486 solid;
+    height: 18px;
     border-radius: 50%;
-    width: 24px;
+    width: 18px;
     background-color: #241835;
     z-index: -1px; }
 .board_container .board_view ul li .tem .box:after {
@@ -710,7 +712,7 @@ html, body {
     content: '';
     position: absolute;
     top: 0px;
-    left: 7px;
+    left: 0px;
     height: 12px;
     background-color: #241835;
     width: 10px; }
@@ -728,11 +730,11 @@ html, body {
     display: inline-block;
     content: '';
     position: absolute;
-    top: -6px;
-    left: -9px;
-    height: 18px;
+    top: -4px;
+    left: -12px;
+    height: 14px;
     border-radius: 50%;
-    width: 18px;
+    width: 14px;
     background-color: #baa6ff;
     z-index: -1px; }
 .board_container .board_view ul li .tem .box .tum:after {
