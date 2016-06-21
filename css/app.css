@@ -654,7 +654,7 @@ html, body {
     content: '';
     position: absolute;
     top: 4px;
-    right: -4px;
+    right: -3px;
     height: 7px;
     background-color: #241835;
     width: 4px; }
