@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>setting</title>
+    <link rel="stylesheet" media="all" href="../css/vendor.css">
+    <link rel="stylesheet" media="all" href="../css/app.css">
+</head>
+<body>
+
+<div class="setting_container row">
+    <header class="col-3">
+        <button type="button" class="btn">Default</button>
+        <button type="button" class="btn">Save & Exit</button>
+        <button type="button" class="btn">Cancel & Exit</button>
+    </header>
+    <article class="opt_container row col-9">
+        <section class="contents_container">
+            <h2>Server</h2>
+            <div class="box">
+                <h3>Warning options</h3>
+                <ul>
+                    <li>Enable</li>
+                    <li>
+                        <input type="checkbox" id="ena"><label for="ena"></label>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Warning battery</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text" value="60">
+                            <label>%</label>
+                        </div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Enable</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text">
+                            <label>℃</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="box">
+                <h3>Ping check</h3>
+                <ul>
+                    <li>Enable</li>
+                    <li>
+                        <input type="checkbox" id="enable"><label for="enable"></label>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Ping interval</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text">
+                            <label>mesc</label>
+                        </div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Timeout check interval <span class="red">red</span></li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text">
+                            <label>mesc</label>
+                        </div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Connection timeout</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text">
+                            <label>mesc</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <h2 class="mat30">Client</h2>
+        </section>
+    </article>
+</div>
+
+<script type="text/javascript" src="../js/vendor.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
+
+<script>
+    (function($){
+
+        $(window).on("load",function(){
+            $(".contents_container").mCustomScrollbar();
+        });
+
+    })(jQuery);
+</script>
+
+</body></html>

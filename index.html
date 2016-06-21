@@ -1,12 +1,82 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>React App</title>
-<link href="style.css" rel="stylesheet"></head>
-
+<html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ODM Admin</title>
+    <style>
+        body { margin:0; }
+        h1 {  background: #6a6c6a; padding:10px 20px; margin:0; font-weight: bold; font-size: 13px; color:#fff}
+        table { border-spacing:1px; font-size:12px; width:100%; }
+        th { background:#eaeaea; padding:5px; }
+        td { background:#f7f7f7; padding:5px; color:#999999; }
+        td a { color:black; }
+        td span, .bage { display:inline-block; color:white; font-size:11px; padding:2px 5px; border-radius:3px; }
+        span.backlog {background:#999;}
+        span.ready {background:#8a73ff;}
+        span.progress {background:#1fc231;}
+        span.done {background:#ff5144;}
+        span.dialog {background:#ff7701;}
+        span.undefined {display:none}
+        #guideMenu tr td:nth-of-type(6),
+        #guideMenu tr td:nth-of-type(7),
+        #guideMenu tr td:nth-of-type(8),
+        #guideMenu tr td:nth-of-type(9),
+        #guideMenu tr td:nth-of-type(10) {
+            text-align: center;
+        }
+    </style>
+</head>
 <body>
-<div id="React_app" class="React_app"></div>
-<script type="text/javascript" src="bundle.js"></script></body>
-</html>
+
+<h1>Everland VR
+    <div style="float:right">
+        <span class="bage backlog">backlog</span>
+        <span class="bage ready">ready</span>
+        <span class="bage progress">progress</span>
+        <span class="bage done">done</span>
+    </div>
+</h1>
+<table cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+        <th>Root</th>
+        <th>Level 1</th>
+        <th>Level 2</th>
+        <th>Level 3</th>
+        <th>Level 4</th>
+        <th>Type</th>
+        <th>Due date</th>
+        <th>Guide page</th>
+        <th>check</th>
+        <th>desc.</th>
+    </tr>
+    </thead>
+    <tbody id="guideMenu">
+        <tr>
+            <td>front</td>
+            <td class="blank"></td><td class="blank"></td>
+            <td class="blank"></td><td class="blank"></td>
+            <td class="blank"></td><td class="blank"></td>
+            <td class="blank"></td><td class="blank"></td>
+            <td class="blank"></td>
+        </tr>
+        <tr><td class="blank"></td>
+            <td><a href="partials/dashboard.html" target="_blank">dashboard</a></td>
+            <td class="blank"></td><td class="blank"></td><td class="blank"></td>
+            <td><span class=""></span></td>
+            <td></td>
+            <td></td>
+            <td><span class="progress">progress</span></td>
+            <td></td>
+        </tr>
+        <tr><td class="blank"></td>
+            <td><a href="partials/setting.html" target="_blank">setting</a></td>
+            <td class="blank"></td><td class="blank"></td><td class="blank"></td>
+            <td><span class=""></span></td>
+            <td></td>
+            <td></td>
+            <td><span class="progress">progress</span></td>
+            <td></td>
+        </tr>
+</table>
+
+</body></html>
