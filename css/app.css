@@ -254,7 +254,8 @@
     box-sizing: border-box;
     outline: 0;
     color: #ded4ff;
-    font-size: 20px; }
+    font-size: 20px;
+    box-sizing: border-box; }
 
 .input-group {
     display: flex;
@@ -273,7 +274,7 @@
 .input-group [type='text'] ~ label {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
-    height: 33px;
+    height: 34px;
     line-height: 35px;
     display: block;
     text-align: center;
@@ -313,7 +314,9 @@ html, body {
 .setting_container header .btn:hover {
     background-color: #776d99; }
 .setting_container header .btn:active {
-    background-color: #9184ba; }
+    background-color: #9184ba;
+    border-bottom: 2px #a190cf solid;
+    border-top: 2px #8176a3 solid; }
 .setting_container .opt_container {
     height: 100%;
     width: 100%;
@@ -476,7 +479,7 @@ html, body {
     display: inline-block;
     position: absolute;
     top: 10px;
-    left: 4px;
+    left: 2px;
     font-size: 14px; }
 .list_container .btn_group .btn .icons-seat.on {
     color: #02e467; }
@@ -485,8 +488,8 @@ html, body {
     display: inline-block;
     position: absolute;
     top: 10px;
-    left: 4px;
-    font-size: 25px; }
+    left: 2px;
+    font-size: 14px; }
 
 .board_container {
     background-color: rgba(255, 255, 255, 0.2);
@@ -514,7 +517,7 @@ html, body {
     flex-wrap: wrap;
     align-items: center;
     align-content: center;
-    padding: 8px;
+    padding: 10px;
     background-color: #241835;
     border-radius: 10px;
     margin: 8px 8px;
@@ -569,7 +572,7 @@ html, body {
     cursor: pointer;
     text-align: center;
     width: 100%;
-    margin-top: 16px; }
+    margin-top: 12px; }
 .board_container .board_view ul li.active .tem {
     width: inherit;
     display: inline-block;
