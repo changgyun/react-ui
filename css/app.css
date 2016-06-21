@@ -561,34 +561,34 @@ html, body {
     display: none; }
 .board_container .board_view ul li.active {
     z-index: 300;
-    transform: scale(1.3); }
+    transform: scale(1.3, 1.3); }
 .board_container .board_view ul li.active .icons-reset {
     display: block;
-    font-size: 50px;
+    font-size: 40px;
     position: absolute;
     top: 50%;
     left: 0;
-    margin-top: -22.5px;
+    margin-top: -18.5px;
     cursor: pointer;
     text-align: center;
     width: 100%; }
 .board_container .board_view ul li.active .tem {
     width: inherit;
     display: inline-block;
-    margin: 95px 10px 0px 3px;
+    margin: 65px 10px 0px 3px;
     min-height: inherit; }
 .board_container .board_view ul li.active .tem .box {
     display: none; }
 .board_container .board_view ul li.active .bat {
     width: inherit;
-    margin: 95px 10px 0px 3px;
+    margin: 65px 10px 0px 3px;
     display: inline-block;
     min-height: inherit; }
 .board_container .board_view ul li.active .bat .box {
     display: none; }
 .board_container .board_view ul li.active .reset {
     width: inherit;
-    margin: 95px 10px 0px 3px;
+    margin: 65px 10px 0px 3px;
     display: inline-block;
     min-height: inherit; }
 .board_container .board_view ul li .reset {
@@ -612,7 +612,7 @@ html, body {
     color: #ff006c;
     font-size: 18px; }
 .board_container .board_view ul li .bat {
-    margin: 10px 0 0 0px;
+    margin: 20px 0 0 0px;
     display: flex;
     align-items: center;
     justify-content: center;
