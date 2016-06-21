@@ -526,7 +526,7 @@ html, body {
     border-color: #ff006c;
     background-color: #3a1738;
     box-shadow: 0px 0px 12px #000; }
-.board_container .board_view ul li.alert .bat .box:before {
+.board_container .board_view ul li.alert .bat .box:after {
     background-color: #3a1738; }
 .board_container .board_view ul li span {
     color: #fff;
@@ -642,7 +642,7 @@ html, body {
     content: '';
     position: absolute;
     top: 5px;
-    right: -5px;
+    right: -7px;
     outline: 3px #7c7486 solid;
     height: 6px;
     background-color: #241835;
