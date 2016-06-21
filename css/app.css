@@ -8,9 +8,7 @@
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     box-sizing: border-box;
     flex-grow: 0;
-    flex-shrink: 0;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem; }
+    flex-shrink: 0; }
 
 .col-1 {
     flex-basis: 8.33333%;
@@ -370,15 +368,15 @@ html, body {
     height: 100%;
     background: #594b5c;
     background: linear-gradient(#363052, #594b5c);
-    padding: 20px 10px 10px 20px; }
+    padding: 16px 10px 10px 16px; }
 .vr_container header {
     display: flex;
     align-content: center;
     align-items: center;
-    padding-bottom: 18px; }
+    padding-bottom: 8px; }
 .vr_container header h1 {
     flex: 1;
-    font-size: 30px;
+    font-size: 24px;
     color: #fff;
     overflow: hidden; }
 .vr_container header .btn {
@@ -388,10 +386,12 @@ html, body {
     outline: none; }
 .vr_container header .btn i {
     cursor: pointer;
-    font-size: 38px; }
+    font-size: 30px; }
 .vr_container header .btn:active {
     color: #9184ba; }
 
+.list_container {
+    padding-right: 10px; }
 .list_container .list_view {
     border: 1px #000 solid;
     background-color: #000;
@@ -444,7 +444,6 @@ html, body {
     flex: 1; }
 .list_container .list_view li .time {
     display: inline-block; }
-
 .list_container .btn_group {
     background-color: rgba(0, 0, 0, 0.2);
     margin-top: 15px;
