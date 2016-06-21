@@ -573,20 +573,20 @@ html, body {
 .board_container .board_view ul li.active .tem {
     width: inherit;
     display: inline-block;
-    margin: 20px 10px 0px 3px;
+    margin: 16px 10px 0px 3px;
     min-height: inherit; }
 .board_container .board_view ul li.active .tem .box {
     display: none; }
 .board_container .board_view ul li.active .bat {
     width: inherit;
-    margin: 20px 10px 0px 3px;
+    margin: 16px 10px 0px 3px;
     display: inline-block;
     min-height: inherit; }
 .board_container .board_view ul li.active .bat .box {
     display: none; }
 .board_container .board_view ul li.active .reset {
     width: inherit;
-    margin: 20px 10px 0px 3px;
+    margin: 16px 10px 0px 3px;
     display: inline-block;
     min-height: inherit; }
 .board_container .board_view ul li .reset {
@@ -610,7 +610,7 @@ html, body {
     color: #ff006c;
     font-size: 18px; }
 .board_container .board_view ul li .bat {
-    margin: 20px 0 0 0px;
+    margin: 16px 0 0 0px;
     display: flex;
     align-items: center;
     justify-content: center;
