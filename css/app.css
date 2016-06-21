@@ -368,7 +368,8 @@ html, body {
     height: 100%;
     background: #594b5c;
     background: linear-gradient(#363052, #594b5c);
-    padding: 16px 10px 10px 16px; }
+    padding: 16px 10px 10px 16px;
+    box-sizing: border-box; }
 .vr_container header {
     display: flex;
     align-content: center;
@@ -565,23 +566,20 @@ html, body {
 .board_container .board_view ul li.active .icons-reset {
     display: block;
     font-size: 40px;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    margin-top: -18.5px;
     cursor: pointer;
     text-align: center;
-    width: 100%; }
+    width: 100%;
+    margin-top: 30px; }
 .board_container .board_view ul li.active .tem {
     width: inherit;
     display: inline-block;
-    margin: 65px 10px 0px 3px;
+    margin: 25px 10px 0px 3px;
     min-height: inherit; }
 .board_container .board_view ul li.active .tem .box {
     display: none; }
 .board_container .board_view ul li.active .bat {
     width: inherit;
-    margin: 65px 10px 0px 3px;
+    margin: 25px 10px 0px 3px;
     display: inline-block;
     min-height: inherit; }
 .board_container .board_view ul li.active .bat .box {
