@@ -551,8 +551,8 @@ html, body {
     opacity: .3; }
 .board_container .board_view ul li .wifi.warning .icons-loss {
     position: absolute;
-    right: 8px;
-    top: 10px;
+    right: 0px;
+    top: 2px;
     display: block;
     color: #ff006c !important; }
 .board_container .board_view ul li .icons {
