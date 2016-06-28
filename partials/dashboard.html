@@ -707,22 +707,26 @@
             $('.setting_container').css('top', setHeight);
         });
         /*$(".is-setting").click(function() {
-            $('body').addClass('setting')
-            $('.board_container .board_view').removeClass('active')
-            $('.board_container .board_view > ul > li').removeClass('active')
-        });
-        $(".is-vr").click(function() {
-            $('body').removeClass('setting')
-        });*/
-
+         $('body').addClass('setting')
+         $('.board_container .board_view').removeClass('active')
+         $('.board_container .board_view > ul > li').removeClass('active')
+         });
+         $(".is-vr").click(function() {
+         $('body').removeClass('setting')
+         });*/
 
         $(document).on( "click touchstart", function() {
             if ($(".board_view").hasClass('active')) {
-                event.stopImmediatePropagation();
                 $(".board_view").removeClass('active')
                 $(".board_view").find(".is-click").removeClass('active')
+                alert('111')
             }
         });
+
+        function stopEvent(ev) {
+            ev.stopPropagation();
+            alert("event propagation halted.");
+        }
 
         $(".is-click").click(function() {
             if ($(this).hasClass('icons-seat')) { //seat
@@ -743,6 +747,8 @@
 
                 $(this).addClass('active');
                 $(this).parent().parent().addClass('active');
+                alert('222')
+                event.stopPropagation();
 
             } else if ($(this).hasClass('icons-reset')) { //stop
 
