@@ -719,14 +719,8 @@
             if ($(".board_view").hasClass('active')) {
                 $(".board_view").removeClass('active')
                 $(".board_view").find(".is-click").removeClass('active')
-                alert('111')
             }
         });
-
-        function stopEvent(ev) {
-            ev.stopPropagation();
-            alert("event propagation halted.");
-        }
 
         $(".is-click").click(function() {
             if ($(this).hasClass('icons-seat')) { //seat
@@ -747,7 +741,6 @@
 
                 $(this).addClass('active');
                 $(this).parent().parent().addClass('active');
-                alert('222')
                 event.stopPropagation();
 
             } else if ($(this).hasClass('icons-reset')) { //stop
