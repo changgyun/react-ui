@@ -715,10 +715,10 @@
             $('body').removeClass('setting')
         });*/
 
+
         $(document).on( "click touchstart", function() {
-            if ($(this).hasClass('is-click')) {
-                
-            } else {
+            if ($(".board_view").hasClass('active')) {
+                event.stopImmediatePropagation();
                 $(".board_view").removeClass('active')
                 $(".board_view").find(".is-click").removeClass('active')
             }
@@ -743,7 +743,6 @@
 
                 $(this).addClass('active');
                 $(this).parent().parent().addClass('active');
-                event.stopImmediatePropagation();
 
             } else if ($(this).hasClass('icons-reset')) { //stop
 
