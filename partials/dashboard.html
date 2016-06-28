@@ -715,13 +715,13 @@
             $('body').removeClass('setting')
         });*/
 
-
-        $(document).bind("touchstart", function(e) {
-            if ($(".board_view").hasClass('active')) {
+        $(document).on( "click touchstart", function() {
+            /*if ($(".board_view").hasClass('active')) {
                 $(".board_view").removeClass('active')
                 $(".board_view").find(".is-click").removeClass('active')
-            }
-        }
+            }*/
+            alert('2')
+        });
 
         $(".is-click").click(function() {
             if ($(this).hasClass('icons-seat')) { //seat
