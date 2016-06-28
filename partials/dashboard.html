@@ -715,10 +715,13 @@
          $('body').removeClass('setting')
          });*/
 
-        $(document).on( "touchstart", function() {
+        var activeFlag = true;
+
+        $(document).on( "click touchstart", function() {
             if ($(".board_view").hasClass('active')) {
                 $(".board_view").removeClass('active')
                 $(".board_view").find(".is-click").removeClass('active')
+                activeFlag = false;
             }
         });
 
@@ -739,9 +742,14 @@
 
             } else if ($(this).parent().parent().hasClass('board_view')) { //board
 
-                $(this).addClass('active');
-                $(this).parent().parent().addClass('active');
-                event.stopPropagation();
+                if (activeFlag == true) {
+                    $(this).addClass('active');
+                    $(this).parent().parent().addClass('active');
+                    event.stopPropagation();
+                } else {
+                    activeFlag = true;
+                }
+
 
             } else if ($(this).hasClass('icons-reset')) { //stop
 
