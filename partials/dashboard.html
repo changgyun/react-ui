@@ -715,7 +715,7 @@
             $('body').removeClass('setting')
         });*/
 
-        $(document).on('click touchstart', function () {
+        $(document).click('touchstart', function () {
             if ($(".board_view").hasClass('active')) {
                 $(".board_view").removeClass('active')
                 $(".board_view").find(".is-click").removeClass('active')
