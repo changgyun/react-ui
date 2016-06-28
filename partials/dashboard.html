@@ -716,11 +716,12 @@
         });*/
 
         $(document).on( "click touchstart", function() {
-            /*if ($(".board_view").hasClass('active')) {
+            if ($(this).hasClass('is-click')) {
+                
+            } else {
                 $(".board_view").removeClass('active')
                 $(".board_view").find(".is-click").removeClass('active')
-            }*/
-            alert('2')
+            }
         });
 
         $(".is-click").click(function() {
