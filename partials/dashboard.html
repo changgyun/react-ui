@@ -739,9 +739,10 @@
 
             } else if ($(this).parent().parent().hasClass('board_view')) { //board
 
-                $(this).addClass('active')
+                $(this).addClass('active');
                 $(this).parent().parent().addClass('active');
                 event.stopPropagation();
+                event.preventDefault();
 
             } else if ($(this).hasClass('icons-reset')) { //stop
 
