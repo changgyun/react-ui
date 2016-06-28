@@ -719,7 +719,7 @@
             if ($(".board_view").hasClass('active')) {
                 $(".board_view").removeClass('active')
                 $(".board_view").find(".is-click").removeClass('active')
-                event.stopImmediatePropagation();
+                event.stopPropagation();
             }
         });
 
@@ -739,9 +739,12 @@
                 //$('.bar').css('width', '0%')
 
             } else if ($(this).parent().parent().hasClass('board_view')) { //board
-                event.stopImmediatePropagation();
+
+                event.stopPropagation();
+                return;
                 $(this).addClass('active')
                 $(this).parent().parent().addClass('active');
+
             } else if ($(this).hasClass('icons-reset')) { //stop
 
                 //alert('event')
