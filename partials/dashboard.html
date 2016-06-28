@@ -741,8 +741,7 @@
 
                 $(this).addClass('active');
                 $(this).parent().parent().addClass('active');
-                event.stopPropagation();
-                event.preventDefault();
+                event.stopImmediatePropagation();
 
             } else if ($(this).hasClass('icons-reset')) { //stop
 
