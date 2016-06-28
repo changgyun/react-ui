@@ -10,13 +10,18 @@
 <div class="vr_container">
     <header>
         <h1><i class="icons icons-logo"></i></h1>
-        <button type="button" class="btn icon"><i class="icons icons-setting"></i></button>
+
+        <div class="conneted">
+            <span class="title">Connected</span>
+            <span id="ui:number-of-devices">12</span>/<span>20</span>
+        </div>
+        <button type="button" class="btn icon is-setting" id="btn:setting"><i class="icons icons-setting"></i></button>
     </header>
     <article class="row">
         <section class="list_container col-4">
             <ul class="list_view">
                 <li class="is-click">
-                    <span class="title">intro</span>
+                    <span class="title">intintrointrointroin trorointintroin trointrointrorointintrointrointrointrorointintrointrointrointroro intro</span>
                     <span class="time">00:04</span>
                     <span class="bar"></span>
                 </li>
@@ -41,7 +46,7 @@
                     <span class="bar"></span>
                 </li>
                 <li class="is-click">
-                    <span class="title">Outro</span>
+                    <span class="title">안녕하세요 박민욱프로입니다.대쉬보드 관련하여 가이드 받고자 메일드립니다.</span>
                     <span class="time">00:04</span>
                     <span class="bar"></span>
                 </li>
@@ -77,16 +82,16 @@
                 </li>
             </ul>
             <div class="btn_group">
-                <span class="btn icons"><i class="icons icons-seat off is-click"></i></span>
-                <span class="btn icons"><i class="icons icons-play_c is-click"></i></span>
-                <span class="btn icons"><i class="icons icons-stop_c is-click"></i></span>
-                <span class="btn icons"><i class="icons icons-reset_c"></i></span>
+                <span class="btn icons"><i class="icons icons-seat off is-click" id="4dchair_btn"></i></span>
+                <span class="btn icons"><i class="icons icons-play_c is-click disable" id="play_btn"></i></span>
+                <span class="btn icons"><i class="icons icons-stop_c is-click" id="stop_btn"></i></span>
+                <span class="btn icons"><i class="icons icons-reset_c" id="rearrange_btn"></i></span>
             </div>
         </section>
         <section class="board_container col-8">
             <div class="board_view">
                 <ul>
-                    <li class="alert is-click">
+                    <li class="is-click warning" id="101">
                         <span>101</span>
                         <div class="play warning">
                             <i class="icons icons-stop_c"></i>
@@ -97,10 +102,6 @@
                             <i class="icons icons-loss"></i>
                         </div>
                         <i class="icons icons-reset is-click"></i>
-                        <div class="reset warning">
-                            <span class="title">12</span>
-                            <i class="icons icons-reset"></i>
-                        </div>
                         <div class="bat warning">
                             <span class="title">20%</span>
                             <span class="box">
@@ -114,7 +115,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="alert is-click">
+                    <li class="is-click warning" id="201">
                         <span>201</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -138,7 +139,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="301">
                         <span>301</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -162,7 +163,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="alert is-click">
+                    <li class="is-click warning" id="401">
                         <span>401</span>
                         <div class="play warning">
                             <i class="icons icons-stop_c"></i>
@@ -186,7 +187,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click alert" id="501">
                         <span>501</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -212,7 +213,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="is-click">
+                    <li class="is-click alert" id="102">
                         <span>102</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -236,7 +237,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="202">
                         <span>202</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -247,7 +248,7 @@
                             <i class="icons icons-loss"></i>
                         </div>
                         <i class="icons icons-reset is-click"></i>
-                        <div class="bat">
+                        <div class="bat charge">
                             <span class="title">80%</span>
                             <span class="box">
                                 <span class="tum" style="width: 80%"></span>
@@ -260,7 +261,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="302">
                         <span>302</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -284,7 +285,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="402">
                         <span>402</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -295,7 +296,7 @@
                             <i class="icons icons-loss"></i>
                         </div>
                         <i class="icons icons-reset is-click"></i>
-                        <div class="bat">
+                        <div class="bat charge">
                             <span class="title">80%</span>
                             <span class="box">
                                 <span class="tum" style="width: 80%"></span>
@@ -308,7 +309,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="502">
                         <span>502</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -334,7 +335,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="is-click">
+                    <li class="is-click" id="103">
                         <span>103</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -358,7 +359,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="203">
                         <span>203</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -382,7 +383,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="303">
                         <span>303</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -406,7 +407,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="403">
                         <span>403</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -430,7 +431,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="503">
                         <span>503</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -456,7 +457,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="is-click">
+                    <li class="is-click" id="104">
                         <span>104</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -480,7 +481,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="204">
                         <span>204</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -504,7 +505,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="304">
                         <span>304</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -528,7 +529,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="404">
                         <span>404</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -552,7 +553,7 @@
                             </span>
                         </div>
                     </li>
-                    <li class="is-click">
+                    <li class="is-click" id="504">
                         <span>504</span>
                         <div class="play">
                             <i class="icons icons-stop_c"></i>
@@ -582,6 +583,114 @@
     </article>
 </div>
 
+<div class="setting_container row">
+    <header class="col-3">
+        <button type="button" class="btn" id="btn:setting-default">Default</button>
+        <button type="button" class="btn is-vr" id="btn:setting-save">Save & Exit</button>
+        <button type="button" class="btn is-vr" id="btn:setting-cancel">Cancel & Exit</button>
+    </header>
+    <article class="opt_container row col-9">
+        <section class="contents_container">
+            <h2>Server</h2>
+            <div class="box">
+                <h3>Warning options</h3>
+                <ul>
+                    <li>Enable</li>
+                    <li>
+                        <input type="checkbox" id="setting:warn"><label for="setting:warn"></label>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Warning battery</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text" value="60" id="setting:warn-battery">
+                            <label>%</label>
+                        </div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Warning temperature</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text" id="setting:warn-temperature">
+                            <label>℃</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="box">
+                <h3>Device check</h3>
+                <ul>
+                    <li>Check interval</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text" id="setting:device-check-check-interval">
+                            <label>msec</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <h2 class="mat30">Client</h2>
+            <div class="box">
+                <h3>Motion client</h3>
+                <ul>
+                    <li>Motion server address</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text" id="setting:motion-server-address">
+                        </div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Server port</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text" id="setting:motion-server-port">
+                        </div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Connection timeout</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text" id="setting:motion-server-connection-timeout">
+                            <label>msec</label>
+                        </div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Reconnect interval</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text" id="setting:motion-server-reconnect-interval">
+                            <label>msec</label>
+                        </div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Ping interval<span class="red">(Must be bigger than Loading Lag)</span></li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text" id="setting:motion-server-ping-interval">
+                            <label>msec</label>
+                        </div>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Time check interval</li>
+                    <li>
+                        <div class="input-group">
+                            <input type="text" id="setting:motion-server-time-check-interval">
+                            <label>msec</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </article>
+</div>
+
 <script type="text/javascript" src="../js/vendor.js"></script>
 <script type="text/javascript" src="../js/app.js"></script>
 
@@ -592,29 +701,51 @@
             $(".list_view").mCustomScrollbar();
         });
 
+        //layout
+        $(document).ready(function() {
+            var setHeight = - $('.setting_container').height();
+            $('.setting_container').css('top', setHeight);
+        });
+        /*$(".is-setting").click(function() {
+            $('body').addClass('setting')
+            $('.board_container .board_view').removeClass('active')
+            $('.board_container .board_view > ul > li').removeClass('active')
+        });
+        $(".is-vr").click(function() {
+            $('body').removeClass('setting')
+        });*/
+
+        $(document).click(function() {
+            if ($(".board_view").hasClass('active')) {
+                $(".board_view").removeClass('active')
+                $(".board_view").find(".is-click").removeClass('active')
+            }
+        });
+
         $(".is-click").click(function() {
             if ($(this).hasClass('icons-seat')) { //seat
 
-                $(this).toggleClass('on')
+                //$(this).toggleClass('on')
 
             } else if ($(this).hasClass('icons-play_c')) { //play
 
-                $('.active').addClass('play')
-                $('.active .bar').css('width', '50%')
+                //$('.active').addClass('play')
+                //$('.active .bar').css('width', '50%')
 
             } else if ($(this).hasClass('icons-stop_c')) { //stop
 
-                $('.active').removeClass('play')
-                $('.bar').css('width', '0%')
+                //$('.active').removeClass('play')
+                //$('.bar').css('width', '0%')
 
             } else if ($(this).parent().parent().hasClass('board_view')) { //board
 
-                $(this).toggleClass('active')
-                $(this).parent().parent().toggleClass('active')
+                event.stopImmediatePropagation();
+                $(this).addClass('active')
+                $(this).parent().parent().addClass('active')
 
             } else if ($(this).hasClass('icons-reset')) { //stop
 
-                alert('event')
+                //alert('event')
 
             } else {
 
