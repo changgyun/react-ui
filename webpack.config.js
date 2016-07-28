@@ -33,7 +33,11 @@ module.exports = {
         inline: true,
         port: 3000,
         contentBase: __dirname + '/dist/',
-        historyApiFallback: true
+        historyApiFallback: true,
+        stats: {
+            colors: true,
+            chunks: false,
+        },
     },
     module: {
         loaders: [

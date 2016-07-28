@@ -36,8 +36,8 @@ body {
   &:nth-child(1) {
     background-color: transparent!important;
   }
-  &:nth-child(2) {
-    box-shadow: none;
+  > div {
+    box-shadow: none!important;
   }
 }
 
