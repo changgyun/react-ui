@@ -62,6 +62,10 @@ module.exports = {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
             },
+            {
+                test: /\.json$|\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+                loader: "file"
+            }
         ]
     }
 }

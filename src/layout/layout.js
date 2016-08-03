@@ -50,8 +50,8 @@ import NavigationClose from 'material-ui/svg-icons/navigation/menu';
 import Nav from './nav';
 import Home from '../view/Home';
 import Button from '../view/Button';
-
 import Masonry from '../components/masonry';
+import instagram from '../components/instagram';
 
 import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
 
@@ -73,6 +73,7 @@ class layout extends React.Component {
                 {title: "Home", link_able: "home"},
                 {title: "Button", link_able: "button"},
                 {title: "Masonry", link_able: "masonry"},
+                {title: "instagram", link_able: "instagram"},
             ]
         };
     }
@@ -111,7 +112,7 @@ class layout extends React.Component {
                     </div>
                     <div className="container">
                         <div className="contents">
-                            <h2>Coresystem UI</h2>
+                            <h2>Conrad UI</h2>
                                 <div className="view">
                                     {this.props.children}
                                 </div>
@@ -133,5 +134,6 @@ ReactDOM.render(<Router history = {browserHistory}>
         <Route path = "home" component = {Home} />
         <Route path = "button" component = {Button} />
         <Route path = "masonry" component = {Masonry} />
+        <Route path = "instagram" component = {instagram} />
     </Route>
 </Router>, document.getElementById('React_app'));

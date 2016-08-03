@@ -11,6 +11,11 @@ body {
   backface-visibility: hidden;
 }
 
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
   background-color: #287DA6;
   background-image: url('https://atmospherejs.com/bg-hero-1200x600.jpg');
@@ -106,6 +111,33 @@ body {
         color: #fff;
         text-decoration: none;
       }
+    }
+  }
+}
+
+
+
+.cardLayout {
+  width: 250px;
+  margin: 0 10px;
+  .commentBox {
+    span {font-weight: bold}
+  }
+}
+
+.imagesModal {
+  width: 640px!important;
+  > div {
+    background-color: #fff!important;
+    width: 640px;
+    height: 730px;
+    > div {
+      padding-bottom: 0!important;
+    }
+  }
+  .bigImages {
+    img {
+      width: 100%;
     }
   }
 }
