@@ -101,7 +101,6 @@ const PhotoList = React.createClass({
             async: false,
             success: function(data) {
                 this.setState({data: data.data});
-                console.log(data)
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -119,6 +118,7 @@ const PhotoList = React.createClass({
 
     render : function(){
         const photoList = this.state.data.map(function(photo){
+            console.log(photo)
             const date = new Date(photo.created_time * 1000);
             const months = ['January','Febuary','March','April','May','June','July','August','September','October','November','December'];
             const dateFormat = months[date.getMonth()] + " " + date.getDate() + "th " + date.getFullYear();

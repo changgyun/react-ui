@@ -38,8 +38,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import getCustomTheme from './themeCustom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
@@ -52,6 +52,7 @@ import Home from '../view/Home';
 import Button from '../view/Button';
 import Masonry from '../components/masonry';
 import instagram from '../components/instagram';
+import tumblr from '../components/tumblr';
 
 import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
 
@@ -74,6 +75,7 @@ class layout extends React.Component {
                 {title: "Button", link_able: "button"},
                 {title: "Masonry", link_able: "masonry"},
                 {title: "instagram", link_able: "instagram"},
+                {title: "tumblr", link_able: "tumblr"},
             ]
         };
     }
@@ -88,11 +90,12 @@ class layout extends React.Component {
 
     render(){
         return  (
-            <MuiThemeProvider muiTheme={getCustomTheme()}>
+            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
                 <div className="layout_container" id="layout_container">
                     <div className={(this.state.open ? 'nav open' : 'nav')}>
                         <IconButton
                             linkButton={true}
+                            className="menuBtn"
                             onTouchTap={this.handleToggle.bind(this)}
                             tooltip="menu"
                         >
@@ -135,5 +138,6 @@ ReactDOM.render(<Router history = {browserHistory}>
         <Route path = "button" component = {Button} />
         <Route path = "masonry" component = {Masonry} />
         <Route path = "instagram" component = {instagram} />
+        <Route path = "tumblr" component = {tumblr} />
     </Route>
 </Router>, document.getElementById('React_app'));
