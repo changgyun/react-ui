@@ -31,26 +31,12 @@ const Mychip = React.createClass({
             chipToggle: false
         };
     },
-    handleRequestDelete() {
-        this.setState({chipToggle: true});
-    },
-    handleTouchTap() {
-        this.setState({chipToggle: false});
-    },
-    handleTag(el) {
-    },
     render() {
         return (
             <Chip
-                className={this.state.chipToggle ? 'chip' : 'chip active'}
-                backgroundColor={this.state.chipToggle ? 'rgba(212,212,212,.1)' : 'rgba(212,212,212,1)'}
-                onRequestDelete={this.handleRequestDelete.bind(this)}
-                onTouchTap={this.handleTouchTap.bind(this)}
                 style={styles.chip}
             >
-                <div onClick={this.handleTag(this.props.tagsMenuList)}>
-                    {this.props.tagsMenuList}
-                </div>
+                {this.props.tagsMenuList}
             </Chip>
             /*<Chip
              backgroundColor={blue300}
@@ -123,42 +109,41 @@ const MyCard = React.createClass({
 });
 
 /*const urlData = 'http://api.tumblr.com/v2/blog/woosys.tumblr.com/posts?' +
-    'tag=region&' +
-        //'tag=italy&' +
-    'api_key=tiR2XYIkXPsuYbtvDIQGR1k5iC4YBRdKxSvlZZW2jNzcxkoRtb&' +
-    'callback=JSON_CALLBACK';*/
+ 'tag=region&' +
+ //'tag=italy&' +
+ 'api_key=tiR2XYIkXPsuYbtvDIQGR1k5iC4YBRdKxSvlZZW2jNzcxkoRtb&' +
+ 'callback=JSON_CALLBACK';*/
 
 
 const tumblrList = React.createClass({
     loadTumblr: function() {
-       /*$.ajax({
-            url: urlData,
-            dataType: 'jsonp',
-            success: function(data) {
-                this.setState({data: data.response.posts});
-                console.log(data.response)
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });*/
+        /*$.ajax({
+         url: urlData,
+         dataType: 'jsonp',
+         success: function(data) {
+         this.setState({data: data.response.posts});
+         console.log(data.response)
+         }.bind(this),
+         error: function(xhr, status, err) {
+         console.error(this.props.url, status, err.toString());
+         }.bind(this)
+         });*/
         $.ajax({
             url: tumblrAPI,
             dataType: 'json',
             async: false,
             success: function(data) {
                 this.setState({data: data.response.posts});
+                this.setState({items: data.response.posts});
 
                 const postlen = data.response.posts.length;
                 const tagMenu = [];
                 for(let i=0;i < postlen;i++) {
                     const tagslen =  data.response.posts[i].tags.length;
                     for(let j=0;j < tagslen;j++){
-                        tagMenu.push(data.response.posts[i].tags[j] + '-' + i);
+                        tagMenu.push(data.response.posts[i].tags[j]);
                     }
                 }
-
-                console.log(tagMenu)
 
                 const tagMenuUniq = tagMenu.reduce(function(a,b){
                     if (a.indexOf(b) < 0 ) a.push(b);
@@ -179,7 +164,12 @@ const tumblrList = React.createClass({
         return {
             data: [],
             tagMenu: [],
+            items: [],
         };
+    },
+
+    componentWillMount: function(){
+        this.setState({items: this.state.data});
     },
 
     componentDidMount: function() {
@@ -187,11 +177,19 @@ const tumblrList = React.createClass({
         //setInterval(this.loadInstagram, 3000000);
     },
 
+    filterList : function(event){
+        var updatedList = this.state.data;
+        updatedList = updatedList.filter(function(item){
+            return item.summary.toLowerCase().search(
+                    event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({items: updatedList});
+    },
+
     render : function(){
-        const tumblrList = this.state.data.map(function(tumblr){
+        const tumblrList = this.state.items.map(function(tumblr){
             const captionText = tumblr.caption.replace(/(<([^>]+)>)/gi, "");
             const tumblrTaglist = tumblr.tags.join(', ');
-
             return(
                 <MyCard
                     photoImages={tumblr.photos[0].alt_sizes[2].url}
@@ -212,18 +210,26 @@ const tumblrList = React.createClass({
             )
         });
         return(
-            <div className="content_tem">
-                <h3>tumblr API</h3>
-                <div style={styles.wrapper}>
-                    {tumblrtag}
+            <div className="container">
+                <div className="contents">
+                    <h2>Conrad</h2>
+                    <div className="view">
+                        <div className="content_tem">
+                            <h3>tumblr API</h3>
+                            <div style={styles.wrapper}>
+                                {tumblrtag}
+                            </div>
+                            <input type="text" placeholder="Search" onChange={this.filterList}/>
+                            <Masonry
+                                className={'my-gallery-class'}
+                                elementType={'ul'}
+                                options={masonryOptions}
+                                disableImagesLoaded={false}>
+                                {tumblrList}
+                            </Masonry>
+                        </div>
+                    </div>
                 </div>
-                <Masonry
-                    className={'my-gallery-class'}
-                    elementType={'ul'}
-                    options={masonryOptions}
-                    disableImagesLoaded={false}>
-                    {tumblrList}
-                </Masonry>
             </div>
         );
     }

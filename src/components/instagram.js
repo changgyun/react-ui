@@ -138,15 +138,22 @@ const PhotoList = React.createClass({
             )
         });
         return(
-            <div className="content_tem">
-                <h3>instagram</h3>
-                <Masonry
-                    className={'my-gallery-class'}
-                    elementType={'ul'}
-                    options={masonryOptions}
-                    disableImagesLoaded={false}>
-                    {photoList}
-                </Masonry>
+            <div className="container">
+                <div className="contents">
+                    <h2>Conrad</h2>
+                    <div className="view">
+                        <div className="content_tem">
+                            <h3>instagram</h3>
+                            <Masonry
+                                className={'my-gallery-class'}
+                                elementType={'ul'}
+                                options={masonryOptions}
+                                disableImagesLoaded={false}>
+                                {photoList}
+                            </Masonry>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

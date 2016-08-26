@@ -51,11 +51,17 @@ var Gallery = React.createClass({
             { title: 'F', images: 'https://ssl.pstatic.net/sstatic/search/2015/h_logo.png'}
         ];
         return (
-            <div className="content_tem">
-                <h3>Masonry</h3>
-                <MyGallery cards={cards}/>
+            <div className="container">
+                <div className="contents">
+                    <h2>Conrad</h2>
+                    <div className="view">
+                        <div className="content_tem">
+                            <h3>Masonry</h3>
+                            <MyGallery cards={cards}/>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         );
     }
 });

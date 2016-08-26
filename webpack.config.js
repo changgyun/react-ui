@@ -41,14 +41,14 @@ module.exports = {
         },
     },
     module: {
-        preLoaders: [
+        /*preLoaders: [
             {
                 test: /\.js$/,
                 configFile: './.eslintrc',
                 loader: "eslint-loader",
                 exclude: /node_modules/
             }
-        ],
+        ],*/
         loaders: [
             {
                 test: /\.js$/,
