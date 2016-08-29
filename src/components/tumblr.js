@@ -9,6 +9,7 @@ import Badge from 'material-ui/Badge';
 import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import ChatOutline from 'material-ui/svg-icons/communication/chat-bubble-outline';
 import Chip from 'material-ui/Chip';
+import TextField from 'material-ui/TextField';
 import {blue300, indigo900} from 'material-ui/styles/colors';
 
 const styles = {
@@ -24,6 +25,7 @@ const styles = {
 const masonryOptions = {
     transitionDuration: 0
 };
+
 
 const Mychip = React.createClass({
     getInitialState () {
@@ -114,7 +116,6 @@ const MyCard = React.createClass({
  'api_key=tiR2XYIkXPsuYbtvDIQGR1k5iC4YBRdKxSvlZZW2jNzcxkoRtb&' +
  'callback=JSON_CALLBACK';*/
 
-
 const tumblrList = React.createClass({
     loadTumblr: function() {
         /*$.ajax({
@@ -135,6 +136,7 @@ const tumblrList = React.createClass({
             success: function(data) {
                 this.setState({data: data.response.posts});
                 this.setState({items: data.response.posts});
+                this.setState({elements: data.response.posts});
 
                 const postlen = data.response.posts.length;
                 const tagMenu = [];
@@ -165,15 +167,21 @@ const tumblrList = React.createClass({
             data: [],
             tagMenu: [],
             items: [],
+            elements: [],
+            isInfiniteLoading: false,
+            ListNum: 8,
+            UpdateListNum: 8,
         };
     },
 
     componentWillMount: function(){
         this.setState({items: this.state.data});
+        this.loadTumblr();
     },
 
     componentDidMount: function() {
-        this.loadTumblr();
+        this.buildElements(0, this.state.ListNum);
+        window.addEventListener('scroll', this.scrollEnd);
         //setInterval(this.loadInstagram, 3000000);
     },
 
@@ -184,6 +192,50 @@ const tumblrList = React.createClass({
                     event.target.value.toLowerCase()) !== -1;
         });
         this.setState({items: updatedList});
+    },
+
+    buildElements: function(start, end, ListNum) {
+        var infintyList = this.state.data;
+        var infintyLength= this.state.data.length;
+        var elements = [];
+        console.log(start, end)
+        if (end > infintyLength) {
+            end = infintyLength;
+        }
+        for (var i = start; i < end; i++) {
+            infintyList[i].key = i;
+            elements.push(infintyList[i]);
+        }
+        if (end == this.state.ListNum) {
+            this.eleInit(elements)
+        } else {
+            return elements;
+        }
+    },
+
+    scrollEnd: function() {
+        var scrollHeight = document.body.scrollHeight;
+        var clientHeight = document.body.clientHeight;
+        var ScrollTop = document.body.scrollTop;
+        var scrollPos = scrollHeight - ScrollTop;
+        if (clientHeight == scrollPos){
+            var that = this;
+            this.setState({
+                isInfiniteLoading: true
+            });
+            setTimeout(function() {
+                var elemLength = that.state.items.length,
+                    newElements = that.buildElements(elemLength, elemLength + that.state.UpdateListNum);
+                that.setState({
+                    isInfiniteLoading: false,
+                    items: that.state.items.concat(newElements)
+                });
+            }, 2500);
+        }
+    },
+
+    eleInit: function(elements) {
+        this.setState({items: elements});
     },
 
     render : function(){
@@ -219,10 +271,23 @@ const tumblrList = React.createClass({
                             <div style={styles.wrapper}>
                                 {tumblrtag}
                             </div>
-                            <input type="text" placeholder="Search" onChange={this.filterList}/>
+                            <TextField
+                                hintText="Tag Text"
+                                onChange={this.filterList}
+                            />
+                            { this.state.isInfiniteLoading ?
+                                <div className="loading">
+                                    <div className="thecube">
+                                        <div className="cube c1"></div>
+                                        <div className="cube c2"></div>
+                                        <div className="cube c4"></div>
+                                        <div className="cube c3"></div>
+                                    </div>
+                                    <div className="cubetext">Loading..</div>
+                                </div>
+                                : null }
                             <Masonry
                                 className={'my-gallery-class'}
-                                elementType={'ul'}
                                 options={masonryOptions}
                                 disableImagesLoaded={false}>
                                 {tumblrList}
