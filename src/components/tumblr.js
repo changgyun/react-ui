@@ -185,7 +185,6 @@ const tumblrList = React.createClass({
     componentDidMount: function() {
         this.buildElements(0, this.state.ListNum);
         window.addEventListener('scroll', this.scrollEnd);
-        //setInterval(this.loadInstagram, 3000000);
     },
 
     filterList : function(event, text){
@@ -193,7 +192,12 @@ const tumblrList = React.createClass({
         var currentList = this.state.currentItems;
         if (text != "") {
             updatedList = updatedList.filter(function(item){
-                return item.summary.toLowerCase().search(
+                var tagLength = item.tags.length;
+                for (var i = 0; i < tagLength; ++i) {
+                    var tagMerge = tagMerge + item.tags[i];
+                    var tagFilter = tagMerge.substring(9)
+                }
+                return tagFilter.toLowerCase().search(
                         event.target.value.toLowerCase()) !== -1;
             });
             this.setState({items: updatedList});
