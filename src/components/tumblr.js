@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Masonry from 'react-masonry-component';
 import tumblrAPI from '../components/tumblrList.json';
+import Loading from '../components/Loading';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -167,8 +168,10 @@ const tumblrList = React.createClass({
             data: [],
             tagMenu: [],
             items: [],
+            currentItems: [],
             elements: [],
             isInfiniteLoading: false,
+            isLastAlert: false,
             ListNum: 8,
             UpdateListNum: 8,
         };
@@ -185,20 +188,24 @@ const tumblrList = React.createClass({
         //setInterval(this.loadInstagram, 3000000);
     },
 
-    filterList : function(event){
-        var updatedList = this.state.data;
-        updatedList = updatedList.filter(function(item){
-            return item.summary.toLowerCase().search(
-                    event.target.value.toLowerCase()) !== -1;
-        });
-        this.setState({items: updatedList});
+    filterList : function(event, text){
+        var updatedList = this.state.items;
+        var currentList = this.state.currentItems;
+        if (text != "") {
+            updatedList = updatedList.filter(function(item){
+                return item.summary.toLowerCase().search(
+                        event.target.value.toLowerCase()) !== -1;
+            });
+            this.setState({items: updatedList});
+        } else {
+            this.setState({items: currentList});
+        }
     },
 
-    buildElements: function(start, end, ListNum) {
+    buildElements: function(start, end) {
         var infintyList = this.state.data;
         var infintyLength= this.state.data.length;
         var elements = [];
-        console.log(start, end)
         if (end > infintyLength) {
             end = infintyLength;
         }
@@ -218,17 +225,27 @@ const tumblrList = React.createClass({
         var clientHeight = document.body.clientHeight;
         var ScrollTop = document.body.scrollTop;
         var scrollPos = scrollHeight - ScrollTop;
+        var infintyLength= this.state.data.length;
+        var elemLength = this.state.items.length
         if (clientHeight == scrollPos){
             var that = this;
-            this.setState({
-                isInfiniteLoading: true
-            });
+
+            if (infintyLength != elemLength){
+                this.setState({
+                    isInfiniteLoading: true
+                });
+            } else {
+                this.setState({
+                    isLastAlert: true
+                });
+            }
             setTimeout(function() {
                 var elemLength = that.state.items.length,
                     newElements = that.buildElements(elemLength, elemLength + that.state.UpdateListNum);
                 that.setState({
                     isInfiniteLoading: false,
-                    items: that.state.items.concat(newElements)
+                    items: that.state.items.concat(newElements),
+                    currentItems: that.state.items.concat(newElements)
                 });
             }, 2500);
         }
@@ -236,6 +253,11 @@ const tumblrList = React.createClass({
 
     eleInit: function(elements) {
         this.setState({items: elements});
+        this.setState({currentItems: elements});
+    },
+
+    handleClose: function() {
+        this.setState({isLastAlert: false});
     },
 
     render : function(){
@@ -261,6 +283,15 @@ const tumblrList = React.createClass({
                 />
             )
         });
+
+        const alertActions = [
+            <FlatButton
+                label="Ok"
+                primary={true}
+                onTouchTap={this.handleClose}
+            />,
+        ];
+
         return(
             <div className="container">
                 <div className="contents">
@@ -275,17 +306,15 @@ const tumblrList = React.createClass({
                                 hintText="Tag Text"
                                 onChange={this.filterList}
                             />
-                            { this.state.isInfiniteLoading ?
-                                <div className="loading">
-                                    <div className="thecube">
-                                        <div className="cube c1"></div>
-                                        <div className="cube c2"></div>
-                                        <div className="cube c4"></div>
-                                        <div className="cube c3"></div>
-                                    </div>
-                                    <div className="cubetext">Loading..</div>
-                                </div>
-                                : null }
+                            { this.state.isInfiniteLoading ? <Loading /> : null }
+                            <Dialog
+                                actions={alertActions}
+                                modal={false}
+                                open={this.state.isLastAlert}
+                                onRequestClose={this.handleClose}
+                            >
+                                The end of the current line.
+                            </Dialog>
                             <Masonry
                                 className={'my-gallery-class'}
                                 options={masonryOptions}
