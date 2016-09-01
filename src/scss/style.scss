@@ -131,6 +131,7 @@ ul, li {
 .cardLayout {
   width: 250px;
   margin: 10px 10px;
+  .cardImages {padding: 10px 10px 0 10px;}
   .commentBox {
     span {font-weight: bold}
   }
@@ -166,16 +167,20 @@ ul, li {
   padding: 8px 15px!important;
 }
 
-.chip {
-  svg {
-    fill:rgba(0,0,0,.13)!important;
-  }
-  &.active {
+.chipLayout {
+  display: flex;
+  .chip {
     svg {
-      fill:rgba(0,0,0,.258824)!important;
+      fill:rgba(0,0,0,.13)!important;
+    }
+    &.active {
+      svg {
+        fill:rgba(0,0,0,.258824)!important;
+      }
     }
   }
 }
+
 
 .packery-item {
   border: 1px solid #000;

@@ -10,7 +10,7 @@ import Badge from 'material-ui/Badge';
 import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import ChatOutline from 'material-ui/svg-icons/communication/chat-bubble-outline';
 import Chip from 'material-ui/Chip';
-import TextField from 'material-ui/TextField';
+import AutoComplete from 'material-ui/AutoComplete';
 import {blue300, indigo900} from 'material-ui/styles/colors';
 
 const styles = {
@@ -27,20 +27,26 @@ const masonryOptions = {
     transitionDuration: 0
 };
 
-
 const Mychip = React.createClass({
     getInitialState () {
         return {
             chipToggle: false
         };
     },
+
     render() {
         return (
-            <Chip
+            <div className="chipLayout">
+                {this.props.tagsMenuList.map( ( tags, index ) => {
+                    return <Chip onTouchTap={this.props.onTouchTap} style={styles.chip}>{tags}</Chip>
+                })}
+            </div>
+            /*<Chip
+                onTouchTap={this.chipFilter}
                 style={styles.chip}
             >
                 {this.props.tagsMenuList}
-            </Chip>
+            </Chip>*/
             /*<Chip
              backgroundColor={blue300}
              onRequestDelete={handleRequestDelete}
@@ -66,7 +72,6 @@ const MyCard = React.createClass({
         this.setState({open: false});
     },
     render() {
-
         const actions = [
             <FlatButton
                 label="Close"
@@ -74,11 +79,12 @@ const MyCard = React.createClass({
                 onTouchTap={this.handleClose}
             />,
         ];
-
         return (
             <div className="cardContainer" data-filter={this.props.tagText}>
                 <Card className="cardLayout">
-                    <CardMedia>
+                    <CardMedia
+                        className="cardImages"
+                    >
                         <img src={this.props.photoImages} onClick={this.handleOpen}/>
                         <Dialog
                             contentClassName="imagesModal"
@@ -110,7 +116,6 @@ const MyCard = React.createClass({
         );
     }
 });
-
 /*const urlData = 'http://api.tumblr.com/v2/blog/woosys.tumblr.com/posts?' +
  'tag=region&' +
  //'tag=italy&' +
@@ -138,7 +143,6 @@ const tumblrList = React.createClass({
                 this.setState({data: data.response.posts});
                 this.setState({items: data.response.posts});
                 this.setState({elements: data.response.posts});
-
                 const postlen = data.response.posts.length;
                 const tagMenu = [];
                 for(let i=0;i < postlen;i++) {
@@ -147,15 +151,13 @@ const tumblrList = React.createClass({
                         tagMenu.push(data.response.posts[i].tags[j]);
                     }
                 }
-
                 const tagMenuUniq = tagMenu.reduce(function(a,b){
                     if (a.indexOf(b) < 0 ) a.push(b);
                     return a;
                 },[]);
-
                 this.setState({tagMenu: tagMenuUniq});
 
-
+                console.log(data)
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -193,12 +195,39 @@ const tumblrList = React.createClass({
         if (text != "") {
             updatedList = updatedList.filter(function(item){
                 var tagLength = item.tags.length;
+                var tagMerge = "";
+                var tagFilter = "";
                 for (var i = 0; i < tagLength; ++i) {
-                    var tagMerge = tagMerge + item.tags[i];
-                    var tagFilter = tagMerge.substring(9)
+                    tagMerge += item.tags[i];
+                }
+                if(tagLength > 0){
+                    tagFilter = item.tags.join();
                 }
                 return tagFilter.toLowerCase().search(
                         event.target.value.toLowerCase()) !== -1;
+            });
+            this.setState({items: updatedList});
+        } else {
+            this.setState({items: currentList});
+        }
+    },
+
+    filterAutoList : function(searchText){
+        var updatedList = this.state.items;
+        var currentList = this.state.currentItems;
+        if (searchText != "") {
+            updatedList = updatedList.filter(function(item){
+                var tagLength = item.tags.length;
+                var tagMerge = "";
+                var tagFilter = "";
+                for (var i = 0; i < tagLength; ++i) {
+                    tagMerge += item.tags[i];
+                }
+                if(tagLength > 0){
+                    tagFilter = item.tags.join();
+                }
+                return tagFilter.toLowerCase().search(
+                        searchText.toLowerCase()) !== -1;
             });
             this.setState({items: updatedList});
         } else {
@@ -233,7 +262,6 @@ const tumblrList = React.createClass({
         var elemLength = this.state.items.length
         if (clientHeight == scrollPos){
             var that = this;
-
             if (infintyLength != elemLength){
                 this.setState({
                     isInfiniteLoading: true
@@ -264,6 +292,10 @@ const tumblrList = React.createClass({
         this.setState({isLastAlert: false});
     },
 
+    chipFilter: function(event) {
+        console.log('2')
+    },
+
     render : function(){
         const tumblrList = this.state.items.map(function(tumblr){
             const captionText = tumblr.caption.replace(/(<([^>]+)>)/gi, "");
@@ -279,14 +311,15 @@ const tumblrList = React.createClass({
             )
         });
 
-        const tumblrtag = this.state.tagMenu.map(function(tumblrtags){
-
-            return(
+        /*const tumblrtag = this.state.tagMenu.map(function(tumblrtags){
+            return*//*(
                 <Mychip
                     tagsMenuList={tumblrtags}
                 />
-            )
-        });
+            )*//*
+        });*/
+
+        const tumblrtag = this.state.tagMenu;
 
         const alertActions = [
             <FlatButton
@@ -304,11 +337,18 @@ const tumblrList = React.createClass({
                         <div className="content_tem">
                             <h3>tumblr API</h3>
                             <div style={styles.wrapper}>
-                                {tumblrtag}
+                                <Mychip
+                                    tagsMenuList={tumblrtag}
+                                    onTouchTap={this.chipFilter}
+                                />
                             </div>
-                            <TextField
-                                hintText="Tag Text"
-                                onChange={this.filterList}
+                            <AutoComplete
+                                floatingLabelText="Tag search"
+                                filter={AutoComplete.filterAutoList}
+                                onNewRequest={this.filterAutoList}
+                                onUpdateInput={this.filterAutoList}
+                                openOnFocus={true}
+                                dataSource={tumblrtag}
                             />
                             { this.state.isInfiniteLoading ? <Loading /> : null }
                             <Dialog
