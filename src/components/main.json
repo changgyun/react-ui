@@ -1,0 +1,24 @@
+{
+  "posts": [{
+    "type": "apply",
+    "title": "아이콘이름 갯수 챠트"
+  },{
+    "type": "date",
+    "title": "기간별 게시물 등록 현황"
+  },{
+    "type": "dvid",
+    "title": "첫번째 태그별 전체 포스트 비율"
+  },{
+    "type": "tag",
+    "title": "게시풀 포멧별 업로드 현황"
+  },{
+    "type": "environment",
+    "title": "사용자환경"
+  },{
+    "type": "tagClude",
+    "title": "태그클라우드"
+  },{
+    "type": "week",
+    "title": "요일별게시물 등록 현황"
+  }]
+}
