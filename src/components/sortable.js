@@ -4,6 +4,8 @@ import { Sortable } from 'react-sortable';
 import tumblrAPI from '../components/tumblrList.json';
 import CityRow from '../components/reartime';
 import SimpleBarChart from '../components/SimpleBarChart';
+import TagCloud from '../components/Tagcloud';
+import PieChart from '../components/PieChart';
 
 var ListItem = React.createClass({
 
@@ -90,6 +92,38 @@ var ListItem = React.createClass({
                     gnbPost.push(tmData[i].tags[0]);
                 }
 
+                var PiePostChart = [];
+                /*for(let i=0;i < gnbPost.length;i++) {
+                    var sub = new Object();
+                    var tagArray = gnbPost.filter(function (item, index, array) {
+                        return !!~item.search(gnbPost[i]);
+                    });
+                    sub['name'] = tagArray[0];
+                    sub['value'] = tagArray.length;
+                    PiePostChart.push(sub);
+                }*/
+
+                for (var i=0; i<gnbPost.length; i++) {
+                    var key = gnbPost[i].toString();
+                    if (!PiePostChart[key]) {
+                        PiePostChart[key] = 1
+                    } else {
+                        PiePostChart[key] = PiePostChart[key] + 1;
+                    }
+                }
+
+                console.log(PiePostChart)
+
+                var PieDateChart = [];
+                for(var i in PiePostChart){
+                    var sub = new Object();
+                    sub['name'] =i;
+                    sub['value'] = PiePostChart[i];
+                    PieDateChart.push(sub);
+                }
+
+                console.log(PieDateChart)
+
                 var gnbPost = gnbPost.map(function(item, i) {
                     return (
                         <div>
@@ -102,7 +136,7 @@ var ListItem = React.createClass({
                     <div {...this.props} className="list-item dvid">
                         {this.props.children.title}
                         <div>
-                            {gnbPost}
+                            <PieChart PieTagdata={PieDateChart}/>
                         </div>
                     </div>
             )
@@ -151,9 +185,23 @@ var ListItem = React.createClass({
                 }
 
                 const tagMenuUniq = tagClude.reduce(function(a,b){
-                    if (a.indexOf(b) < 0 ) a.push(b);
+                    if (a.indexOf(b) < 0 ) {
+                        a.push(b);
+                    }
                     return a;
                 },[]);
+
+                var cludeChart = []
+
+                for(let i=0;i < tagClude.length;i++) {
+                    var sub = new Object();
+                    var newArray = tagClude.filter(function (item, index, array) {
+                        return !!~item.search(tagClude[i]);
+                    });
+                    sub['value'] = newArray[0];
+                    sub['count'] = newArray.length;
+                    cludeChart.push(sub);
+                }
 
                 var tagClude = tagMenuUniq.map(function(item, i) {
                     return (
@@ -167,7 +215,7 @@ var ListItem = React.createClass({
                     <div {...this.props} className="list-item tagClude">
                         {this.props.children.title}
                         <div>
-                            {tagClude}
+                            <TagCloud tag={cludeChart} />
                         </div>
                     </div>
             )
@@ -237,10 +285,6 @@ var ListItem = React.createClass({
                     }
                 }
 
-                console.log(sunNum)
-                console.log(monNum)
-                console.log(wenNum)
-
                 var daychart = []
 
                 for(let i=0;i < weekday.length;i++) {
@@ -291,9 +335,6 @@ var ListItem = React.createClass({
                 return (
                     <div {...this.props} className="list-item week">
                         {this.props.children.title}
-                        <div>
-                            {dayDate}
-                        </div>
                         <SimpleBarChart weekDate={daychart} />
                     </div>
             )
