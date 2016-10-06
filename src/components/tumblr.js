@@ -116,7 +116,7 @@ const MyCard = React.createClass({
         );
     }
 });
-/*const urlData = 'http://api.tumblr.com/v2/blog/woosys.tumblr.com/posts?' +
+/*const urlData = 'http://api.tumblr.com/v2/blog/conrad-woo.tumblr.com/posts?' +
  'tag=region&' +
  //'tag=italy&' +
  'api_key=tiR2XYIkXPsuYbtvDIQGR1k5iC4YBRdKxSvlZZW2jNzcxkoRtb&' +

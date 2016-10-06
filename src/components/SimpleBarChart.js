@@ -4,7 +4,7 @@ import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recha
 const SimpleBarChart = React.createClass({
     render () {
         return (
-            <BarChart width={600} height={300} data={this.props.weekDate}
+            <BarChart width={300} height={300} data={this.props.weekDate}
                 margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                 <XAxis dataKey="name"/>
                 <YAxis/>

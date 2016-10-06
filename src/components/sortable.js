@@ -6,6 +6,9 @@ import CityRow from '../components/reartime';
 import SimpleBarChart from '../components/SimpleBarChart';
 import TagCloud from '../components/Tagcloud';
 import PieChart from '../components/PieChart';
+import RadarChart from '../components/RadarChart';
+import LineChart from '../components/LineChart';
+import AreaChart from '../components/AreaChart';
 
 var ListItem = React.createClass({
 
@@ -57,7 +60,7 @@ var ListItem = React.createClass({
 
                 return (
                     <div {...this.props} className="list-item apply">
-                        {this.props.children.title}
+                        <h2>{this.props.children.title}</h2>
                         <div>
                             {tmLength}
                         </div>
@@ -66,9 +69,40 @@ var ListItem = React.createClass({
             case "date":
 
                 var dayDate = [];
+                var lineChart = [];
                 for(let i=0;i < tmData.length;i++) {
+                    var sub = new Object();
+                    sub['name'] = tmData[i].tags[0];
+                    sub['type'] = tmData[i].type;
+                    sub['amt'] = tmData[i].date.substring(0, 7);
+                    lineChart.push(sub);
                     dayDate.push(tmData[i].date.substring(0, 10));
                 }
+
+                var linetagChart = [];
+                for (var i=0; i<lineChart.length; i++) {
+                    var key = lineChart[i].amt.toString();
+                    if (!linetagChart[key]) {
+                        linetagChart[key] = 1;
+                    } else {
+                        linetagChart[key] = linetagChart[key] + 1;
+                    }
+                }
+
+                for(var i in linetagChart){
+                    var sub = new Object();
+                    for (var j=0; j<lineChart.length; j++) {
+                        if (i == lineChart[j].amt) {
+                            sub['name'] = i;
+                        }
+                    }
+                    sub['cnt'] = linetagChart[i];
+                    linetagChart.push(sub);
+                }
+
+                console.log(linetagChart)
+                linetagChart.reverse()
+
                 var dayDate = dayDate.map(function(item, i) {
                     return (
                         <div>
@@ -79,12 +113,13 @@ var ListItem = React.createClass({
 
                 return (
                     <div {...this.props} className="list-item date">
-                        {this.props.children.title}
+                        <h2>{this.props.children.title}</h2>
                         <div>
-                            {dayDate}
+                            <AreaChart datedata={linetagChart}/>
                         </div>
                     </div>
             )
+            // <LineChart datedata={linetagChart}/>
             case "dvid":
 
                 var gnbPost = [];
@@ -93,15 +128,6 @@ var ListItem = React.createClass({
                 }
 
                 var PiePostChart = [];
-                /*for(let i=0;i < gnbPost.length;i++) {
-                    var sub = new Object();
-                    var tagArray = gnbPost.filter(function (item, index, array) {
-                        return !!~item.search(gnbPost[i]);
-                    });
-                    sub['name'] = tagArray[0];
-                    sub['value'] = tagArray.length;
-                    PiePostChart.push(sub);
-                }*/
 
                 for (var i=0; i<gnbPost.length; i++) {
                     var key = gnbPost[i].toString();
@@ -112,17 +138,13 @@ var ListItem = React.createClass({
                     }
                 }
 
-                console.log(PiePostChart)
-
                 var PieDateChart = [];
                 for(var i in PiePostChart){
                     var sub = new Object();
-                    sub['name'] =i;
-                    sub['value'] = PiePostChart[i];
+                    sub['subject'] =i;
+                    sub['A'] = PiePostChart[i];
                     PieDateChart.push(sub);
                 }
-
-                console.log(PieDateChart)
 
                 var gnbPost = gnbPost.map(function(item, i) {
                     return (
@@ -134,20 +156,39 @@ var ListItem = React.createClass({
 
                 return (
                     <div {...this.props} className="list-item dvid">
-                        {this.props.children.title}
+                        <h2>{this.props.children.title}</h2>
                         <div>
-                            <PieChart PieTagdata={PieDateChart}/>
+                            <RadarChart typedata={PieDateChart}/>
                         </div>
                     </div>
             )
             case "tag":
 
-                var format = [];
+                var typeChart = [];
                 for(let i=0;i < tmData.length;i++) {
-                    format.push(tmData[i].format);
+                    typeChart.push(tmData[i].type);
                 }
 
-                var format = format.map(function(item, i) {
+                var typePostChart = [];
+
+                for (var i=0; i<typeChart.length; i++) {
+                    var key = typeChart[i].toString();
+                    if (!typePostChart[key]) {
+                        typePostChart[key] = 1
+                    } else {
+                        typePostChart[key] = typePostChart[key] + 1;
+                    }
+                }
+
+                var typeDateChart = [];
+                for(var i in typePostChart){
+                    var sub = new Object();
+                    sub['name'] =i;
+                    sub['value'] = typePostChart[i];
+                    typeDateChart.push(sub);
+                }
+
+                var item = typeChart.map(function(item, i) {
                     return (
                         <div>
                             {item}
@@ -157,9 +198,9 @@ var ListItem = React.createClass({
 
                 return (
                     <div {...this.props} className="list-item tag">
-                        {this.props.children.title}
+                        <h2>{this.props.children.title}</h2>
                         <div>
-                            {format}
+                            <PieChart PieTagdata={typeDateChart}/>
                         </div>
                     </div>
             )
@@ -167,7 +208,7 @@ var ListItem = React.createClass({
                 var ua = window.navigator.userAgent;
                 return (
                     <div {...this.props} className="list-item environment">
-                        {this.props.children.title}
+                        <h2>{this.props.children.title}</h2>
                         <div>날짜</div>
                         <CityRow name="CityRow" UTCOffset="5"/>
                         <div>pc</div>
@@ -192,15 +233,21 @@ var ListItem = React.createClass({
                 },[]);
 
                 var cludeChart = []
+                for (var i=0; i<tagClude.length; i++) {
+                    var key = tagClude[i].toString();
+                    if (!cludeChart[key]) {
+                        cludeChart[key] = 1
+                    } else {
+                        cludeChart[key] = cludeChart[key] + 1;
+                    }
+                }
 
-                for(let i=0;i < tagClude.length;i++) {
+                var PieDateChart = [];
+                for(var i in cludeChart){
                     var sub = new Object();
-                    var newArray = tagClude.filter(function (item, index, array) {
-                        return !!~item.search(tagClude[i]);
-                    });
-                    sub['value'] = newArray[0];
-                    sub['count'] = newArray.length;
-                    cludeChart.push(sub);
+                    sub['value'] =i;
+                    sub['count'] = cludeChart[i];
+                    PieDateChart.push(sub);
                 }
 
                 var tagClude = tagMenuUniq.map(function(item, i) {
@@ -213,9 +260,9 @@ var ListItem = React.createClass({
 
                 return (
                     <div {...this.props} className="list-item tagClude">
-                        {this.props.children.title}
+                        <h2>{this.props.children.title}</h2>
                         <div>
-                            <TagCloud tag={cludeChart} />
+                            <TagCloud tag={PieDateChart} />
                         </div>
                     </div>
             )
@@ -334,14 +381,14 @@ var ListItem = React.createClass({
 
                 return (
                     <div {...this.props} className="list-item week">
-                        {this.props.children.title}
+                        <h2>{this.props.children.title}</h2>
                         <SimpleBarChart weekDate={daychart} />
                     </div>
             )
             default:
                 return (
                     <div {...this.props} className="list-item">
-                        {this.props.children.title}
+                        <h2>{this.props.children.title}</h2>
                     </div>
             )
         }

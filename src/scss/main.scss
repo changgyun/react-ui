@@ -1,7 +1,10 @@
 .mainContainer {
   width: 100%;
-  height: 100%;
   max-width: 100%;
+  &:after {
+    display: block;
+    content: '';
+  }
   .mainBackground {
     -webkit-clip-path: polygon(0 0, 0% 100%, 100% 100%);
     clip-path: polygon(0 0, 0% 100%, 100% 100%);
@@ -13,16 +16,42 @@
 }
 
 .list {
-  margin: 100px auto;
-  padding: 0 50px;
+  padding: 100px 50px 0 50px;
   display: flex;
-  align-content: center;
+  align-content: flex-start;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
   box-sizing: border-box;
+  &:after {
+    display: block;
+    content: '';
+  }
   .list-item {
+    &.apply {
+      width: calc(20% - 8px);
+    }
+    &.environment {
+      width: calc(80% - 8px);
+    }
+    &.tagClude, &.date {
+      width: 100%
+    }
+    &.dvid, &.tag, &.week {
+      width: calc(33.33% - 8px);
+    }
+    h2 {
+      font-weight: bold;
+      font-size: 1em;
+      padding: 10px;
+      margin: 0;
+    }
+    border-radius: 6px;
+    padding: 10px;
     background-color: #fff;
-    border: 1px #000 solid;
+    border: 1px #2d2d2d solid;
+    margin: 4px;
+    box-sizing: border-box;
   }
 }

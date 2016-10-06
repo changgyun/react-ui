@@ -8,7 +8,7 @@ const RADIAN = Math.PI / 180;
 const SimplePieChart = React.createClass({
     render () {
         return (
-            <PieChart width={400} height={400} onMouseEnter={this.onPieEnter}>
+            <PieChart width={300} height={300} onMouseEnter={this.onPieEnter}>
                 <Pie
                     data={this.props.PieTagdata}
                     cx={220}

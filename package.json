@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --progress --hot --host 0.0.0.0",
     "clean": "rimraf dist",
     "build:webpack": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
-    "build": "npm run clean && npm run build:webpack",
+    "build": "npm run build:webpack",
     "start": "node devServer.js"
   },
   "repository": {
