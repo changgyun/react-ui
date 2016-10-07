@@ -41,7 +41,22 @@ var ListItem = React.createClass({
     getInitialState: function() {
         return {
             tmData: [],
+            windowWidth: window.innerWidth,
         };
+    },
+
+    handleResize: function(e) {
+        this.setState({
+            windowWidth: window.innerWidth,
+        });
+    },
+
+    componentDidMount: function() {
+        window.addEventListener('resize', this.handleResize);
+    },
+
+    componentWillUnmount: function() {
+        window.removeEventListener('resize', this.handleResize);
     },
 
     componentWillMount: function(){
@@ -50,7 +65,7 @@ var ListItem = React.createClass({
 
     displayName: 'SortableListItem',
     render: function() {
-
+        console.log(this.state.windowWidth)
         var tmData = this.state.tmData;
 
         switch (this.props.children.type) {
@@ -100,7 +115,6 @@ var ListItem = React.createClass({
                     linetagChart.push(sub);
                 }
 
-                console.log(linetagChart)
                 linetagChart.reverse()
 
                 var dayDate = dayDate.map(function(item, i) {
@@ -114,9 +128,7 @@ var ListItem = React.createClass({
                 return (
                     <div {...this.props} className="list-item date">
                         <h2>{this.props.children.title}</h2>
-                        <div>
-                            <AreaChart datedata={linetagChart}/>
-                        </div>
+                        <AreaChart datedata={linetagChart}/>
                     </div>
             )
             // <LineChart datedata={linetagChart}/>
@@ -157,9 +169,7 @@ var ListItem = React.createClass({
                 return (
                     <div {...this.props} className="list-item dvid">
                         <h2>{this.props.children.title}</h2>
-                        <div>
-                            <RadarChart typedata={PieDateChart}/>
-                        </div>
+                        <RadarChart typedata={PieDateChart}/>
                     </div>
             )
             case "tag":
@@ -199,9 +209,7 @@ var ListItem = React.createClass({
                 return (
                     <div {...this.props} className="list-item tag">
                         <h2>{this.props.children.title}</h2>
-                        <div>
-                            <PieChart PieTagdata={typeDateChart}/>
-                        </div>
+                        <PieChart PieTagdata={typeDateChart}/>
                     </div>
             )
             case "environment":
@@ -261,9 +269,7 @@ var ListItem = React.createClass({
                 return (
                     <div {...this.props} className="list-item tagClude">
                         <h2>{this.props.children.title}</h2>
-                        <div>
-                            <TagCloud tag={PieDateChart} />
-                        </div>
+                        <TagCloud tag={PieDateChart} />
                     </div>
             )
             case "week":
@@ -410,6 +416,7 @@ var SortableList = React.createClass({
     updateState: function(obj) {
         this.setState(obj);
     },
+
 
     render: function() {
         var childProps = { className: 'myClass1' };

@@ -259,7 +259,8 @@ const tumblrList = React.createClass({
         var ScrollTop = document.body.scrollTop;
         var scrollPos = scrollHeight - ScrollTop;
         var infintyLength= this.state.data.length;
-        var elemLength = this.state.items.length
+        var elemLength = this.state.items.length;
+        console.log(clientHeight +"------------"+ scrollPos)
         if (clientHeight == scrollPos){
             var that = this;
             if (infintyLength != elemLength){

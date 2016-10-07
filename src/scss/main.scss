@@ -1,5 +1,6 @@
 .mainContainer {
   width: 100%;
+  height: 100%;
   max-width: 100%;
   &:after {
     display: block;
@@ -16,17 +17,22 @@
 }
 
 .list {
-  padding: 100px 50px 0 50px;
+  padding: 10px 10px 10px 10px;
   display: flex;
   align-content: flex-start;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
   flex-wrap: wrap;
   box-sizing: border-box;
   &:after {
     display: block;
     content: '';
+  }
+  .recharts-responsive-container {
+    box-sizing: border-box;
+    height: 340px!important;
   }
   .list-item {
     &.apply {
@@ -35,11 +41,16 @@
     &.environment {
       width: calc(80% - 8px);
     }
-    &.tagClude, &.date {
-      width: 100%
+    &.tagClude {
+      width: 100%;
+    }
+    &.date {
+      width: 100%;
+      height: 400px;
     }
     &.dvid, &.tag, &.week {
       width: calc(33.33% - 8px);
+      height: 400px;
     }
     h2 {
       font-weight: bold;
